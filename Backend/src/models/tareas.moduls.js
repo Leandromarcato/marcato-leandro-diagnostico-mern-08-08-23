@@ -14,7 +14,12 @@ const {Schema,model} = require('mongoose')
 
    Estado:{
     type: String,
-   
+   },
+
+   isActive:{
+    type: Boolean,
+    default: true
+
    }
 })
 

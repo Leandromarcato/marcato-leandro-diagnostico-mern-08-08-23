@@ -2,7 +2,7 @@ const tareasControllers = {};
 const tareas = require("../models/tareas.moduls");
 
 tareasControllers.getTareas = async (req, res) => {
-  const data = await tareas.find();
+  const data = await tareas.find({isActive: true});
   res.json(data);
 };
 
@@ -23,8 +23,7 @@ tareasControllers.postTareas = (req, res) => {
 
 tareasControllers.putTareas = async (req, res) => {
   try {
-    const { Tarea, descripcion, autor, Estado } = req.body;
-
+  
     const tarea = await tareas.findById(req.params.id);
     if (!tarea) {
       return res.status(404).json({ error: "Tarea no encontrada" });
@@ -54,10 +53,18 @@ tareasControllers.completarTarea = async (req, res) => {
 
 tareasControllers.deleteTareas = async (req, res) => {
   try {
-    const tarea = await tareas.findByIdAndDelete(req.params.id);
+    const tarea = await tareas.findOne({
+      $and:[{_id:req.params.id},
+      {isActive:true}]
+    });
+
     if (!tarea) {
       return res.status(404).json({ error: "Tarea no encontrada" });
     }
+    
+    await tarea.updateOne({isActive:false});
+    
+  
     res.json({ message: "Tarea eliminada correctamente", tarea });
   } catch (error) {
     console.error(error);
