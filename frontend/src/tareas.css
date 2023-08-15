@@ -1,27 +1,94 @@
+/* tareas.css */
 .app-container {
-    text-align: center;
-    margin: 2rem;
-  }
-  
-  .agregar-tarea {
-    margin-bottom: 1rem;
-  }
-  
-  .lista-tareas {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .lista-tareas li {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 0.5rem;
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-  }
-  
-  .completada {
-    text-decoration: line-through;
-  }
-  
+  background-color: #f0f0f0;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.app-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.task-list-container {
+  width: 100%;
+  max-width: 600px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.lista-tareas {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 10px 0;
+}
+
+.task-name {
+  font-size: 18px;
+}
+
+.completed {
+  color: #4caf50;
+}
+
+.in-progress {
+  color: #f57c00;
+}
+
+.task-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.action-button {
+  padding: 6px 12px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-task-form {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.add-task-input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.add-task-button {
+  padding: 8px 16px;
+  font-size: 14px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.completed-message {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #4caf50;
+}

@@ -67,52 +67,56 @@ function Tareas() {
   useEffect(() => {
     cargarTareas();
   }, []);
-
   return (
-     <div className="app-container">
-  <h1>Lista de Tareas</h1>
-  <ul className="lista-tareas">
-        {tareas.map((tarea, index) => (
-          <li key={index}>
-            {tarea.Tarea}
-          </li>
-        ))}
-      </ul> 
+    <div className="app-container">
+      <h1 className="app-title">Lista de Tareas</h1>
+      <div className="task-list-container">
+        <ul className="lista-tareas">
+          {tareas.map((tarea) => (
+            <li key={tarea._id} className={`task-item ${tarea.Estado?.includes('Completa') ? 'completed' : 'in-progress'}`}>
+              <span className="task-name">{tarea.Tarea}</span>
+             
+              <div className="task-actions">
+                <button
+                  className="action-button"
+                  onClick={() => {
+                    marcarCompletada(tarea._id);
+                    setMensajeCompletada(`Tarea  de "${tarea.Tarea}" completada`);
+                  }}
+                  
+                >
+                  Marcar como Completada
+                </button>
+                <button className="action-button" onClick={() => eliminarTarea(tarea._id)}>
+                  Eliminar
+                </button>
+              </div>
+              
+            </li>
+          ))}
+         
+        </ul>
 
-  {/* Formulario para agregar nuevas tareas */}
-  <form onSubmit={agregarTarea}>
-    <input
-      type="text"
-      placeholder="Nueva tarea"
-      value={nuevaTarea}
-      onChange={(e) => setNuevaTarea(e.target.value)}
-    />
-    <button type="submit">Agregar</button>
-  </form>
+        {/* Formulario para agregar nuevas tareas */}
+        <form className="add-task-form" onSubmit={agregarTarea}>
+          <input
+            className="add-task-input"
+            type="text"
+            placeholder="Nueva tarea"
+            value={nuevaTarea}
+            onChange={(e) => setNuevaTarea(e.target.value)}
+          />
+          <button className="add-task-button" type="submit">
+            Agregar
+          </button>
+        </form>
+        
+          {/* Mensaje de tarea completada */}
+          {mensajeCompletada && <p className="completed-message">{mensajeCompletada}</p>}
 
-  <ul className="lista-tareas">
-    {tareas.map((tarea) => (
-      <li key={tarea._id}>
-        <span className={tarea.Estado?.includes("Completa") ? 'Tarea Terminada' : 'En Proceso'}>
-          {tarea.Tarea} 
-        </span>
-        <button
-              onClick={() => {
-                marcarCompletada(tarea._id);
-                setMensajeCompletada(`Tarea "${tarea.Tarea}" completada`);
-              }}
-            >Estado de la Tarea</button>
-        <button onClick={() => eliminarTarea(tarea._id)}>Eliminar</button>
-      </li>
-    ))}
-  </ul>
-  
-   {/* Mensaje de tarea completada */}
-   {mensajeCompletada && <p>{mensajeCompletada}</p>}
-  
-</div>
-);
-    
+      </div>
+    </div>
+  );
 }
 
 
