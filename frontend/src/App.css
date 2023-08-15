@@ -1,0 +1,28 @@
+.App {
+  text-align: center;
+  margin-top: 50px;
+  font-family: Arial, sans-serif;
+}
+
+.task {
+  display: flex;
+  align-items: center;
+  margin: 10px;
+}
+
+.completed {
+  text-decoration: line-through;
+}
+
+.task-form input {
+  padding: 5px;
+  margin-right: 10px;
+}
+
+.task-form button {
+  padding: 5px 10px;
+}
+
+.task-list {
+  margin-top: 20px;
+}

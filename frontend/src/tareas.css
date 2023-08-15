@@ -1,0 +1,27 @@
+.app-container {
+    text-align: center;
+    margin: 2rem;
+  }
+  
+  .agregar-tarea {
+    margin-bottom: 1rem;
+  }
+  
+  .lista-tareas {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .lista-tareas li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+  }
+  
+  .completada {
+    text-decoration: line-through;
+  }
+  
